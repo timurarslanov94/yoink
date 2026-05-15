@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Yoink — 一键复制网页元素，直送 AI",
+    "description": "Extension name"
+  },
+  "extShortName": {
+    "message": "Yoink",
+    "description": "Short extension name"
+  },
+  "extDesc": {
+    "message": "一键复制任意网页元素 — HTML、CSS、Tailwind、JSX、字体、截图 — 打包好可直接粘贴到 Claude 或 ChatGPT。",
+    "description": "Extension description"
+  },
+  "actionTitle": {
+    "message": "Yoink — 显示/隐藏小部件",
+    "description": "Browser action tooltip"
+  }
+}

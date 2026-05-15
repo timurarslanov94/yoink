@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Yoink — копируй элементы прямо для AI",
+    "description": "Extension name"
+  },
+  "extShortName": {
+    "message": "Yoink",
+    "description": "Short extension name"
+  },
+  "extDesc": {
+    "message": "Скопируй любой элемент сайта — HTML, CSS, Tailwind, JSX, шрифты, скриншоты — готовый пакет для Claude и ChatGPT.",
+    "description": "Extension description"
+  },
+  "actionTitle": {
+    "message": "Yoink — открыть/закрыть виджет",
+    "description": "Browser action tooltip"
+  }
+}

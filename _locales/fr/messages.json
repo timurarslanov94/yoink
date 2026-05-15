@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Yoink — copie tout élément, prêt pour l'IA",
+    "description": "Extension name"
+  },
+  "extShortName": {
+    "message": "Yoink",
+    "description": "Short extension name"
+  },
+  "extDesc": {
+    "message": "Copiez tout élément web : HTML, CSS, Tailwind, JSX, polices, captures — prêt à coller dans Claude ou ChatGPT.",
+    "description": "Extension description"
+  },
+  "actionTitle": {
+    "message": "Yoink — afficher/masquer le widget",
+    "description": "Browser action tooltip"
+  }
+}

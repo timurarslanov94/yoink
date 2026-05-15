@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Yoink — 어떤 요소든 AI에 즉시 복사",
+    "description": "Extension name"
+  },
+  "extShortName": {
+    "message": "Yoink",
+    "description": "Short extension name"
+  },
+  "extDesc": {
+    "message": "어떤 웹 요소든 즉시 복사 — HTML, CSS, Tailwind, JSX, 폰트, 스크린샷 — Claude/ChatGPT에 바로 붙여넣기.",
+    "description": "Extension description"
+  },
+  "actionTitle": {
+    "message": "Yoink — 위젯 토글",
+    "description": "Browser action tooltip"
+  }
+}

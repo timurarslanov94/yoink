@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Yoink — 要素を即コピーして AI に渡す",
+    "description": "Extension name"
+  },
+  "extShortName": {
+    "message": "Yoink",
+    "description": "Short extension name"
+  },
+  "extDesc": {
+    "message": "あらゆるサイトの要素を即コピー：HTML、CSS、Tailwind、JSX、フォント、スクショ — Claude/ChatGPT へそのまま貼り付け可能。",
+    "description": "Extension description"
+  },
+  "actionTitle": {
+    "message": "Yoink — ウィジェットの切り替え",
+    "description": "Browser action tooltip"
+  }
+}

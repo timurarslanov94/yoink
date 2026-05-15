@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yoink — copy any element, ready for AI</title>
+  <meta name="description" content="Yoink — a Chrome extension to copy any UI element from any website and hand it to Claude or ChatGPT for pixel-perfect reproduction.">
+  <link rel="icon" href="../icons/icon128.png">
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --surface: #18181b;
+      --border: #27272a;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #d4af7a;
+      --link: #d4af7a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: radial-gradient(120% 80% at 30% 0%, #2a2a2a 0%, #0a0a0b 60%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      font-size: 16px; line-height: 1.6; min-height: 100vh;
+      letter-spacing: -0.005em;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px; }
+    header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+    header img { width: 48px; height: 48px; }
+    h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+    .lede { color: var(--muted); font-size: 15px; margin-bottom: 32px; }
+    h2 {
+      font-size: 18px; font-weight: 600; margin: 40px 0 12px;
+      letter-spacing: -0.015em;
+    }
+    h3 { font-size: 15px; font-weight: 600; margin: 20px 0 6px; color: var(--text); }
+    p, li { color: #d4d4d8; }
+    a { color: var(--link); text-decoration: none; border-bottom: 1px solid rgba(212,175,122,0.3); }
+    a:hover { border-bottom-color: var(--accent); }
+    ul { padding-left: 22px; margin: 8px 0; }
+    li { margin-bottom: 6px; }
+    code {
+      font-family: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+      background: var(--surface); color: var(--accent);
+      padding: 1px 6px; border-radius: 4px; font-size: 0.92em;
+      border: 1px solid var(--border);
+    }
+    .meta {
+      margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 13px;
+    }
+    .footer-links { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <img src="../icons/icon128.png" alt="Yoink icon">
+      <h1>Yoink — Privacy Policy</h1>
+    </header>
+    <p class="lede">Last updated: <strong>15 May 2026</strong></p>
+
+    <h2>The short version</h2>
+    <p>Yoink is <strong>100% free, forever</strong> — no paywall, no premium tier, no ads, no accounts. It also does not collect, transmit, store, or sell any personal data. There are no servers. There are no analytics.</p>
+
+    <h2>What Yoink reads</h2>
+    <p>When you activate the inspector and click an element, Yoink reads the following <em>locally in your browser</em>:</p>
+    <ul>
+      <li>HTML markup of the element you click and its descendants</li>
+      <li>Computed CSS styles of the same elements (via <code>getComputedStyle</code>)</li>
+      <li>CSS rules from the page's stylesheets (via <code>document.styleSheets</code>) — cross-origin sheets that the browser blocks are skipped</li>
+      <li>Font-family names and <code>@font-face</code> URLs referenced by the page</li>
+      <li>Image URLs referenced by <code>img[src]</code>, <code>background-image</code>, and similar properties</li>
+      <li>The visible viewport pixels (only when you explicitly use the Screenshot or Full-page screenshot feature)</li>
+    </ul>
+
+    <h2>What Yoink stores</h2>
+    <p>Yoink saves the following to your browser's local storage (<code>localStorage</code>), and only to your browser:</p>
+    <ul>
+      <li>The floating widget's position on the screen</li>
+      <li>Your chosen UI theme (Graphite / Stone)</li>
+      <li>Your chosen UI language</li>
+      <li>A per-domain flag if you used "Hide on this site"</li>
+    </ul>
+
+    <h2>What Yoink does NOT touch</h2>
+    <ul>
+      <li>Cookies — never read, never sent anywhere</li>
+      <li>Form input values — never collected unless they happen to be visible in the DOM you explicitly choose to copy</li>
+      <li>Browsing history, bookmarks, saved passwords, or autofill data</li>
+      <li>Data from other tabs</li>
+    </ul>
+
+    <h2>What leaves your browser</h2>
+    <p>Nothing — unless <strong>you</strong> paste a copied bundle or screenshot somewhere. Yoink only writes to the system clipboard or triggers file downloads. Both actions are user-initiated and entirely under your control.</p>
+
+    <h2>Permissions used</h2>
+    <ul>
+      <li><code>activeTab</code> — read the current tab's DOM only when you trigger Yoink on it.</li>
+      <li><code>scripting</code> — inject the inspector script into the current page.</li>
+      <li><code>clipboardWrite</code> — copy bundles and PNG screenshots when you press the buttons.</li>
+      <li><code>storage</code> — remember the preferences listed above.</li>
+      <li><code>&lt;all_urls&gt;</code> host permission — required for <code>chrome.tabs.captureVisibleTab</code> (screenshots) and so the inspector works on any website.</li>
+    </ul>
+
+    <h2>Third-party services</h2>
+    <p>Yoink does not integrate with any third-party service, SDK, tracker, or analytics provider.</p>
+
+    <h2>Children's privacy</h2>
+    <p>Yoink is a developer tool. It is not directed at children under 13.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, the updated version will appear at the URL of this page. Material changes will also be noted in the extension's changelog.</p>
+
+    <h2>Contact</h2>
+    <p>Questions, concerns, or bug reports — reach out to the author:</p>
+    <div class="footer-links">
+      <a href="https://instagram.com/arslanov.tim">Instagram @arslanov.tim</a>
+      <a href="https://t.me/yourself_realize">Telegram @yourself_realize</a>
+    </div>
+
+    <div class="meta">
+      Yoink is open-source. Built by Timur Arslanov.
+    </div>
+  </main>
+</body>
+</html>

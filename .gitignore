@@ -1,0 +1,13 @@
+.DS_Store
+.img/
+task_plan.md
+findings.md
+progress.md
+STORE_LISTINGS.md
+node_modules/
+*.zip
+.vscode/
+first-screen.html
+output/
+yandex-header.html
+src/

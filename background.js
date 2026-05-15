@@ -1,7 +1,8 @@
 /**
  * Yoink Background Service Worker
- * - Action icon click → toggle (or unhide widget if user "hid for this site")
- * - chrome.runtime message handler for screenshot capture
+ * - Inject content.js on demand (when user clicks the action icon) — uses activeTab
+ * - Toggle widget visibility via window.__copycss.toggleWidget()
+ * - Forward captureVisibleTab requests from content script
  */
 
 chrome.action.onClicked.addListener(async (tab) => {
@@ -13,13 +14,15 @@ chrome.action.onClicked.addListener(async (tab) => {
     return;
   }
   try {
+    // Inject content.js (or no-op if already loaded — content.js guards itself).
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      func: () => {
-        if (window.__copycss?.toggleWidget) {
-          window.__copycss.toggleWidget();
-        }
-      }
+      files: ['content.js']
+    });
+    // Then toggle the floating widget.
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: () => { window.__copycss?.toggleWidget?.(); }
     });
   } catch (e) {
     console.warn('Yoink: action click failed', e);
@@ -27,8 +30,8 @@ chrome.action.onClicked.addListener(async (tab) => {
 });
 
 /**
- * Capture visible tab and send dataURL back.
- * Caller must hide overlay/panel BEFORE requesting capture for clean shot.
+ * Capture visible tab and return the dataURL to the content script.
+ * Caller must hide overlay/panel/widget BEFORE requesting capture for a clean shot.
  */
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg?.type === 'copycss:capture') {

@@ -673,37 +673,109 @@
   // ============================================================
   // EXTRACTOR: Pseudo states (:hover, :focus, :active, :disabled)
   // ============================================================
+  /**
+   * Find all stylesheet rules with interactive pseudo-classes (:hover, :focus, etc.)
+   * that affect the given element either directly OR via an ancestor.
+   *
+   * Coverage:
+   *  - Direct: `.btn:hover { ... }` when el is .btn
+   *  - Ancestor: `.card:hover .btn { ... }` when el is .btn inside .card (parent hover effects)
+   *  - Combined: `.nav .btn:hover` → el matches descendant chain
+   *  - Inside `@media (...)` wrappers — recursed
+   *  - Pseudo-elements paired (`::before`, `::after`) — stripped for matching
+   *  - `:is(...)`, `:where(...)`, `:not(...)` containing pseudos — caught by regex
+   *  - Deduplicated by full cssText
+   */
   function extractStates(el) {
-    const pseudos = [':hover',':focus',':active',':disabled',':focus-visible',':focus-within'];
-    const found = {};
+    const pseudoRe = /:(hover|focus|focus-visible|focus-within|active|disabled|enabled|checked|indeterminate|target|visited|link|placeholder-shown|read-only|read-write|required|optional|valid|invalid|in-range|out-of-range)\b/;
+    /** strip pseudo-classes AND pseudo-elements to leave a structural selector */
+    const strip = (s) =>
+      s.replace(/::?[a-zA-Z-]+(\([^)]*\))?/g, '')
+       .replace(/\s+/g, ' ')
+       .trim() || '*';
+
+    const found = new Map(); // ps → array of { selector, cssText, media }
+    const seenCss = new Set();
+
+    const consider = (selector, cssText, media) => {
+      const psMatch = selector.match(pseudoRe);
+      if (!psMatch) return;
+      const ps = ':' + psMatch[1];
+
+      // 1) Direct or descendant-chain match: structural form of full selector matches el
+      const fullStripped = strip(selector);
+      let matched = false;
+      try { matched = el.matches(fullStripped); } catch {}
+
+      // 2) Ancestor-hover match: pseudo is on an ancestor, el is among its descendants
+      // Split on combinators ( , >, +, ~ ), find the segment carrying the pseudo,
+      // then check if el is a descendant of an ancestor matching the pre-pseudo path
+      // AND el matches the post-pseudo path.
+      if (!matched) {
+        // Tokenize the selector by combinators while preserving them
+        const tokens = selector.split(/(\s+|>|\+|~)/).map(t => t.trim()).filter(Boolean);
+        const pIdx = tokens.findIndex(t => pseudoRe.test(t));
+        if (pIdx >= 0) {
+          const ancestorPath = tokens.slice(0, pIdx + 1).join(' ');
+          const descendantPath = tokens.slice(pIdx + 1).filter(t => !/^[>+~]$/.test(t)).join(' ');
+          try {
+            const ancestor = el.closest(strip(ancestorPath));
+            if (ancestor) {
+              if (!descendantPath) matched = true;
+              else {
+                // Element must be descendant of ancestor AND match descendant chain
+                try { matched = (ancestor.contains(el) || ancestor === el) && el.matches(strip(descendantPath)); } catch {}
+              }
+            }
+          } catch {}
+        }
+      }
+
+      if (!matched) return;
+      if (seenCss.has(cssText)) return;
+      seenCss.add(cssText);
+      if (!found.has(ps)) found.set(ps, []);
+      found.get(ps).push({ selector, cssText, media });
+    };
+
+    const processRule = (rule, media) => {
+      // CSSMediaRule (type 4) — recurse
+      if (rule.type === 4 || rule.constructor?.name === 'CSSMediaRule') {
+        const cond = rule.conditionText || rule.media?.mediaText;
+        for (const inner of rule.cssRules || []) processRule(inner, cond);
+        return;
+      }
+      // CSSSupportsRule, CSSContainerRule — recurse too
+      if (rule.cssRules && (rule.constructor?.name === 'CSSSupportsRule' || rule.constructor?.name === 'CSSContainerRule')) {
+        for (const inner of rule.cssRules) processRule(inner, media);
+        return;
+      }
+      if (!rule.selectorText) return;
+      const selectors = rule.selectorText.split(',').map(s => s.trim());
+      for (const sel of selectors) consider(sel, rule.cssText, media);
+    };
+
     try {
       for (const sheet of document.styleSheets) {
         let rules;
         try { rules = sheet.cssRules; } catch { continue; }
         if (!rules) continue;
-        for (const rule of rules) {
-          if (!rule.selectorText) continue;
-          for (const ps of pseudos) {
-            if (!rule.selectorText.includes(ps)) continue;
-            const base = rule.selectorText.split(',').map(s => s.trim()).filter(s => s.includes(ps));
-            for (const sel of base) {
-              const bare = sel.replace(ps, '').replace(/::?[a-z-]+/g, '').trim() || '*';
-              try {
-                if (el.matches(bare) || el.matches(sel.replace(ps, ''))) {
-                  if (!found[ps]) found[ps] = [];
-                  found[ps].push({ sel, cssText: rule.cssText });
-                }
-              } catch { /* invalid selector */ }
-            }
-          }
-        }
+        for (const rule of rules) processRule(rule);
       }
-    } catch { /* CORS */ }
-    if (!Object.keys(found).length) return '/* no pseudo-state styles detected */';
+    } catch {}
+
+    if (!found.size) return '/* no pseudo-state styles detected */';
+
+    // Order pseudos in a useful way
+    const order = [':hover',':focus',':focus-visible',':focus-within',':active',':disabled',':enabled',':checked',':indeterminate',':target',':visited',':link',':placeholder-shown',':read-only',':read-write',':required',':optional',':valid',':invalid',':in-range',':out-of-range'];
     let out = '';
-    for (const [ps, list] of Object.entries(found)) {
+    for (const ps of order) {
+      if (!found.has(ps)) continue;
       out += `/* ${ps} */\n`;
-      for (const item of list) out += item.cssText + '\n';
+      for (const item of found.get(ps)) {
+        if (item.media) out += `@media ${item.media} {\n  ${item.cssText}\n}\n`;
+        else out += item.cssText + '\n';
+      }
       out += '\n';
     }
     return out.trim();

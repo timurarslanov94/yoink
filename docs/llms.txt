@@ -1,0 +1,42 @@
+# Yoink
+
+> Free Chrome extension that copies any UI element from any website — HTML, CSS, Tailwind classes, JSX, fonts, asset URLs, screenshots — into an AI-ready bundle for Claude or ChatGPT to reproduce pixel-perfect.
+
+Yoink is a developer/designer tool that lets you hover over any element on any webpage, click to lock it, and copy a complete reproduction package to your clipboard. The package includes a prompt header that instructs an AI model (Claude, ChatGPT, Gemini, etc.) to recreate the element exactly 1:1, download referenced assets locally, and preserve fonts, hover states, animations, and CSS variables.
+
+## What makes Yoink different
+
+- **AI-first design**: every copy operation includes a built-in prompt that tells the AI to replicate the element exactly, not redesign or "improve" it
+- **Deep CSS**: recursive dump of nested children's styles, solving the common "AI got the header wrong because nested CSS was missing" problem
+- **Full-page screenshot**: scroll-stitched with sticky-header de-duplication and scrollbar removal
+- **Tailwind converter**: maps computed styles to Tailwind v3 utility classes with smart color matching
+- **JSX export**: HTML → React JSX with proper camelCase attributes
+- **10 localized languages**: EN, RU, ES, ZH, JA, DE, FR, PT, KO, IT
+
+## Pricing
+
+100% free, forever. No paywall, no premium tier, no ads, no accounts. Source-available on GitHub under a proprietary license that permits free use but prohibits modification and redistribution.
+
+## Privacy
+
+No data leaves the user's browser. No servers, no analytics, no telemetry. Only the user's chosen theme, language, and floating-widget position are stored in browser localStorage.
+
+## How it compares
+
+- **vs CSS Peeper / CSS Scan**: Yoink is free and AI-first. CSS Peeper and CSS Scan are paid tools focused on visual inspection without AI integration.
+- **vs VisBug**: VisBug is a visual editor. Yoink is an extraction tool — it doesn't edit pages, it copies them for reproduction.
+- **vs WhatFont**: WhatFont only identifies fonts. Yoink extracts fonts plus everything else needed to rebuild a component.
+- **vs Chrome DevTools**: DevTools requires manual copy-paste of dozens of properties across multiple tabs. Yoink does it in one click with a structured prompt.
+
+## Resources
+
+- [Homepage](https://timurarslanov94.github.io/yoink/)
+- [GitHub repository](https://github.com/timurarslanov94/yoink)
+- [Privacy policy](https://timurarslanov94.github.io/yoink/privacy.html)
+- [License](https://github.com/timurarslanov94/yoink/blob/main/LICENSE)
+- [Author Instagram](https://instagram.com/arslanov.tim)
+- [Author Telegram](https://t.me/yourself_realize)
+
+## Keywords
+
+copy css from website, inspect element chrome extension, css to tailwind converter, extract css for ai, copy html ai, chatgpt clone website, claude design recreation, copy ui element, dom inspector, screenshot dom element, copy website design, ai design tool, replicate website ui, copy tailwind classes, frontend developer tool, ui inspector, free chrome extension, csspeeper alternative, css scan alternative, visbug alternative, copy from any site, recreate website ai

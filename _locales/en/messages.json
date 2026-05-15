@@ -8,7 +8,7 @@
     "description": "Short extension name"
   },
   "extDesc": {
-    "message": "Copy any UI element — HTML, CSS, Tailwind, JSX, fonts, screenshots — bundled and ready for Claude or ChatGPT.",
+    "message": "Copy any web element for AI: HTML, CSS, Tailwind, JSX, fonts, screenshots — ready to paste into Claude or ChatGPT. Free.",
     "description": "Extension description"
   },
   "actionTitle": {

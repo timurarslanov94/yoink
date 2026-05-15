@@ -1,6 +1,10 @@
-# Yoink — copy any element, ready for AI
+# Yoink — copy any web element for AI · Free Chrome extension
 
-A Chrome extension that lets you yoink any UI element from any website and instantly hand it to Claude or ChatGPT for pixel-perfect reproduction.
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Web%20Store-d4af7a?style=flat-square)](https://timurarslanov94.github.io/yoink/) [![License](https://img.shields.io/badge/license-Proprietary-d4af7a?style=flat-square)](LICENSE) [![Languages](https://img.shields.io/badge/i18n-10%20languages-d4af7a?style=flat-square)](_locales/)
+
+**Yoink** is a free Chrome browser extension that lets developers and designers **copy any UI element** from any website — HTML, CSS, Tailwind classes, JSX, fonts, asset URLs, screenshots — and **paste straight into Claude or ChatGPT** for pixel-perfect AI reproduction.
+
+> _Keywords: copy CSS from website · inspect element Chrome extension · CSS to Tailwind converter · extract CSS for AI · ChatGPT clone website · Claude design recreation · screenshot DOM element · CSS Peeper alternative · CSS Scan alternative · VisBug alternative_
 
 Hover, click, copy — HTML, CSS, Tailwind, JSX, fonts, screenshots, and a recursive deep-CSS dump of the whole subtree, all bundled with a prompt that tells the AI to recreate the element exactly.
 

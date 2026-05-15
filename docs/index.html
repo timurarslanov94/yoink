@@ -3,9 +3,152 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yoink — copy any element, ready for AI</title>
-  <meta name="description" content="Yoink — a Chrome extension to copy any UI element from any website and hand it to Claude or ChatGPT for pixel-perfect reproduction.">
-  <link rel="icon" href="../icons/icon128.png">
+  <title>Yoink — Copy any web element for AI · Chrome extension</title>
+  <meta name="description" content="Copy any UI element from any website — HTML, CSS, Tailwind, JSX, fonts, screenshots — and paste into Claude or ChatGPT for pixel-perfect reproduction. Free Chrome extension.">
+  <meta name="keywords" content="copy css from website, inspect element chrome extension, css to tailwind converter, extract css for ai, copy html ai, chatgpt clone website, claude design recreation, copy ui element, dom inspector, screenshot dom element, copy website design, ai design tool, replicate website ui, copy tailwind classes, web design copy tool, scrape css, copy from any site, recreate website ai, frontend developer tool, ui inspector, free chrome extension, copycss alternative, css peeper alternative, css scan alternative, visbug alternative">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Timur Arslanov">
+  <link rel="canonical" href="https://timurarslanov94.github.io/yoink/">
+  <link rel="icon" href="../icons/icon128.png" type="image/png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://timurarslanov94.github.io/yoink/">
+  <meta property="og:title" content="Yoink — Copy any web element for AI">
+  <meta property="og:description" content="Free Chrome extension that copies any UI element from any site — HTML, CSS, Tailwind, JSX, fonts, screenshots — into an AI-ready bundle for Claude or ChatGPT.">
+  <meta property="og:image" content="https://timurarslanov94.github.io/yoink/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Yoink">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yoink — Copy any web element for AI">
+  <meta name="twitter:description" content="Free Chrome extension that copies any UI element from any site — HTML, CSS, Tailwind, JSX, fonts, screenshots — into an AI-ready bundle for Claude or ChatGPT.">
+  <meta name="twitter:image" content="https://timurarslanov94.github.io/yoink/og.png">
+
+  <!-- Schema.org SoftwareApplication for AI search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Yoink",
+    "alternateName": ["Yoink — Copy any web element for AI", "Yoink Chrome Extension"],
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Chrome, Edge, Brave, Arc, Opera",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Yoink is a free Chrome browser extension that lets developers and designers copy any UI element from any website — HTML, CSS, Tailwind classes, JSX, fonts, asset URLs, screenshots — and paste it into Claude or ChatGPT for pixel-perfect reproduction. Includes a built-in AI prompt that instructs the model to recreate the element exactly and download assets locally.",
+    "url": "https://timurarslanov94.github.io/yoink/",
+    "softwareVersion": "1.2.0",
+    "datePublished": "2026-05-15",
+    "inLanguage": ["en", "ru", "es", "zh", "ja", "de", "fr", "pt", "ko", "it"],
+    "featureList": [
+      "Copy HTML of any element with framework noise stripped",
+      "Copy computed CSS without browser defaults",
+      "Deep CSS recursive subtree dump",
+      "Convert computed styles to Tailwind v3 classes",
+      "Export HTML as React JSX",
+      "Extract font families with @font-face URLs",
+      "Extract asset URLs (images, SVGs, background-images)",
+      "Take clean PNG screenshot of any element",
+      "Take full-page screenshot with sticky-header de-duplication",
+      "Inspect pseudo-state styles (:hover, :focus, :active)",
+      "Inspect animations, transitions and @keyframes",
+      "Inspect WCAG accessibility contrast",
+      "Inspect z-index stacking context",
+      "Inspect media queries applied to element",
+      "Color palette extraction across subtree",
+      "AI-ready prompt bundle for Claude or ChatGPT",
+      "10-language localized UI",
+      "Light (Stone) and dark (Graphite) themes",
+      "Draggable floating widget"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Timur Arslanov",
+      "sameAs": [
+        "https://instagram.com/arslanov.tim",
+        "https://t.me/yourself_realize"
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "ratingCount": "1"
+    }
+  }
+  </script>
+
+  <!-- FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does Yoink do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yoink is a Chrome extension that lets you copy any UI element from any website. Hover over an element, click to lock, and copy a complete bundle (HTML, CSS, Tailwind classes, JSX, fonts, asset URLs, screenshots) directly to your clipboard — ready to paste into Claude or ChatGPT for pixel-perfect reproduction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Yoink free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Yoink is 100% free, forever. No paywall, no premium tier, no ads, no accounts. It is a one-time install from the Chrome Web Store."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Yoink help with AI tools like Claude and ChatGPT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When you copy an element, Yoink wraps the HTML and CSS with a structured AI prompt that instructs the model to reproduce the element exactly 1:1, download external assets locally, and preserve fonts, hover states, and animations. Paste into Claude or ChatGPT and the AI knows exactly what to build."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Yoink work on any website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Yoink works on any standard webpage including React, Vue, Next.js, Webflow, Framer, WordPress, and static sites. It cannot run on Chrome internal pages (chrome://) for security reasons."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Yoink collect my data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Yoink does not transmit, store, or sell any data. There are no servers, no analytics, no accounts. Everything happens locally in your browser. Only your chosen UI theme, language and widget position are stored in your browser's localStorage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What languages does Yoink support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yoink's UI is fully translated into 10 languages: English, Russian, Spanish, Chinese (Simplified), Japanese, German, French, Portuguese, Korean, and Italian."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Yoink and CSS Peeper, CSS Scan, or VisBug?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unlike CSS Peeper or CSS Scan, Yoink is built specifically for AI workflows: every copy operation produces an AI-ready bundle with a prompt header that instructs Claude or ChatGPT to reproduce the element exactly. Yoink also includes recursive Deep CSS for nested elements, full-page screenshot stitching, Tailwind conversion, JSX export, accessibility audit, and 10-language UI — all free, all in one extension."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     :root {
       --bg: #0a0a0b;
@@ -14,7 +157,6 @@
       --text: #f4f4f5;
       --muted: #a1a1aa;
       --accent: #d4af7a;
-      --link: #d4af7a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -24,104 +166,178 @@
       font-size: 16px; line-height: 1.6; min-height: 100vh;
       letter-spacing: -0.005em;
     }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px; }
-    header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
-    header img { width: 48px; height: 48px; }
-    h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
-    .lede { color: var(--muted); font-size: 15px; margin-bottom: 32px; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 56px 24px; }
+    nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 64px; }
+    nav .brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+    nav .brand img { width: 36px; height: 36px; }
+    nav .nav-links { display: flex; gap: 20px; font-size: 14px; }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--text); }
+
+    .hero { margin-bottom: 80px; }
+    h1 {
+      font-size: 56px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    h1 .accent { color: var(--accent); }
+    .lede { color: var(--muted); font-size: 19px; max-width: 640px; margin-bottom: 32px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary, .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 10px; font-weight: 600; font-size: 14px;
+      text-decoration: none; transition: transform 200ms, background 200ms, border-color 200ms;
+    }
+    .btn-primary { background: var(--accent); color: #1a1410; }
+    .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    .hero-img {
+      margin-top: 48px; width: 100%; border-radius: 14px;
+      border: 1px solid var(--border); box-shadow: 0 24px 60px -16px rgba(0,0,0,0.5);
+    }
+
     h2 {
-      font-size: 18px; font-weight: 600; margin: 40px 0 12px;
-      letter-spacing: -0.015em;
+      font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+      margin: 64px 0 20px;
     }
-    h3 { font-size: 15px; font-weight: 600; margin: 20px 0 6px; color: var(--text); }
-    p, li { color: #d4d4d8; }
-    a { color: var(--link); text-decoration: none; border-bottom: 1px solid rgba(212,175,122,0.3); }
-    a:hover { border-bottom-color: var(--accent); }
-    ul { padding-left: 22px; margin: 8px 0; }
-    li { margin-bottom: 6px; }
-    code {
-      font-family: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
-      background: var(--surface); color: var(--accent);
-      padding: 1px 6px; border-radius: 4px; font-size: 0.92em;
-      border: 1px solid var(--border);
+    h3 { font-size: 16px; font-weight: 600; margin: 0 0 8px; }
+    p { color: #d4d4d8; }
+
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .feature {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 20px; border-radius: 12px;
     }
-    .meta {
-      margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--border);
-      color: var(--muted); font-size: 13px;
+    .feature p { font-size: 14px; color: var(--muted); }
+
+    .faq details {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 16px 20px; border-radius: 10px; margin-bottom: 8px;
     }
-    .footer-links { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+    .faq summary {
+      font-weight: 600; cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq summary::after { content: '+'; color: var(--muted); font-size: 20px; transition: transform 200ms; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq p { margin-top: 12px; color: #d4d4d8; font-size: 14px; }
+
+    footer {
+      margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+      color: var(--muted); font-size: 14px;
+    }
+    footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(212,175,122,0.3); }
+    footer a:hover { border-bottom-color: var(--accent); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 40px; }
+      nav .nav-links { display: none; }
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <header>
-      <img src="../icons/icon128.png" alt="Yoink icon">
-      <h1>Yoink — Privacy Policy</h1>
-    </header>
-    <p class="lede">Last updated: <strong>15 May 2026</strong></p>
+    <nav>
+      <div class="brand">
+        <img src="../icons/icon128.png" alt="Yoink icon">
+        <span>Yoink</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="https://github.com/timurarslanov94/yoink">GitHub</a>
+      </div>
+    </nav>
 
-    <h2>The short version</h2>
-    <p>Yoink is <strong>100% free, forever</strong> — no paywall, no premium tier, no ads, no accounts. It also does not collect, transmit, store, or sell any personal data. There are no servers. There are no analytics.</p>
+    <section class="hero">
+      <h1>Copy any web element.<br><span class="accent">Paste into AI.</span></h1>
+      <p class="lede">Yoink is a free Chrome extension for developers and designers. Hover over any element on any website, click, and copy a complete bundle — HTML, CSS, Tailwind, JSX, fonts, asset URLs, screenshots — straight into Claude or ChatGPT for pixel-perfect reproduction.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://github.com/timurarslanov94/yoink/releases">⬇ Install for Chrome</a>
+        <a class="btn-secondary" href="https://github.com/timurarslanov94/yoink">View on GitHub</a>
+      </div>
+    </section>
 
-    <h2>What Yoink reads</h2>
-    <p>When you activate the inspector and click an element, Yoink reads the following <em>locally in your browser</em>:</p>
-    <ul>
-      <li>HTML markup of the element you click and its descendants</li>
-      <li>Computed CSS styles of the same elements (via <code>getComputedStyle</code>)</li>
-      <li>CSS rules from the page's stylesheets (via <code>document.styleSheets</code>) — cross-origin sheets that the browser blocks are skipped</li>
-      <li>Font-family names and <code>@font-face</code> URLs referenced by the page</li>
-      <li>Image URLs referenced by <code>img[src]</code>, <code>background-image</code>, and similar properties</li>
-      <li>The visible viewport pixels (only when you explicitly use the Screenshot or Full-page screenshot feature)</li>
-    </ul>
+    <section id="features">
+      <h2>What you can yoink</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>📋 AI-ready bundle</h3>
+          <p>HTML, CSS, Tailwind, fonts, assets and a prompt that tells the AI to reproduce 1:1 and download assets locally.</p>
+        </div>
+        <div class="feature">
+          <h3>🌳 Deep CSS</h3>
+          <p>Recursive subtree dump — solves the "header looks wrong because nested styles are missing" problem.</p>
+        </div>
+        <div class="feature">
+          <h3>🖼 Element screenshot</h3>
+          <p>Clean PNG of just the selected element. No browser chrome, no overlay, no scrollbar.</p>
+        </div>
+        <div class="feature">
+          <h3>📄 Full-page screenshot</h3>
+          <p>Scroll-stitched full page with sticky-header de-duplication. Pixel-perfect, scrollbar removed.</p>
+        </div>
+        <div class="feature">
+          <h3>🎨 Tailwind converter</h3>
+          <p>Computed styles → Tailwind v3 utility classes. Smart color matching against the official palette.</p>
+        </div>
+        <div class="feature">
+          <h3>⚛️ JSX export</h3>
+          <p>HTML → React JSX with proper camelCase. Drop into your codebase.</p>
+        </div>
+        <div class="feature">
+          <h3>♿ A11y inspector</h3>
+          <p>Role, aria-*, WCAG AA/AAA contrast ratio, focusable check.</p>
+        </div>
+        <div class="feature">
+          <h3>🔠 Fonts</h3>
+          <p>Detected @font-face URLs, Google Fonts suggestions, fontface fingerprinting.</p>
+        </div>
+        <div class="feature">
+          <h3>🌐 10 languages</h3>
+          <p>Full UI in English, Russian, Spanish, Chinese, Japanese, German, French, Portuguese, Korean, Italian.</p>
+        </div>
+      </div>
+    </section>
 
-    <h2>What Yoink stores</h2>
-    <p>Yoink saves the following to your browser's local storage (<code>localStorage</code>), and only to your browser:</p>
-    <ul>
-      <li>The floating widget's position on the screen</li>
-      <li>Your chosen UI theme (Graphite / Stone)</li>
-      <li>Your chosen UI language</li>
-      <li>A per-domain flag if you used "Hide on this site"</li>
-    </ul>
+    <section id="faq" class="faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>What does Yoink do?</summary>
+        <p>Hover over any element on any website, click to lock it, and copy a complete bundle to your clipboard — HTML, CSS, Tailwind classes, JSX, fonts, asset URLs, screenshots — ready to paste into Claude or ChatGPT for pixel-perfect reproduction.</p>
+      </details>
+      <details>
+        <summary>Is Yoink really free?</summary>
+        <p>Yes. 100% free, forever. No paywall, no premium tier, no ads, no accounts.</p>
+      </details>
+      <details>
+        <summary>How is it different from CSS Peeper, CSS Scan or VisBug?</summary>
+        <p>Yoink is built for AI workflows. Every copy operation produces an AI-ready bundle with a prompt header that instructs Claude or ChatGPT to reproduce the element exactly. It also has recursive Deep CSS for nested elements, full-page screenshot stitching, Tailwind conversion, JSX export, accessibility audit, and 10-language UI — all free.</p>
+      </details>
+      <details>
+        <summary>Does it work on React / Vue / Next.js / Webflow / Framer?</summary>
+        <p>Yes. Yoink works on any standard webpage including React, Vue, Next.js, Webflow, Framer, WordPress, and static sites. It cleans framework noise (data-reactid, ng-*, etc.) automatically.</p>
+      </details>
+      <details>
+        <summary>Does Yoink collect any data?</summary>
+        <p>No. Yoink does not transmit, store, or sell any data. There are no servers, no analytics, no accounts. Everything happens locally in your browser.</p>
+      </details>
+      <details>
+        <summary>Can I use Yoink commercially?</summary>
+        <p>Yes, free for personal and commercial use. You may not modify, redistribute, or publish derivatives on extension marketplaces — see the <a href="https://github.com/timurarslanov94/yoink/blob/main/LICENSE">license</a>.</p>
+      </details>
+    </section>
 
-    <h2>What Yoink does NOT touch</h2>
-    <ul>
-      <li>Cookies — never read, never sent anywhere</li>
-      <li>Form input values — never collected unless they happen to be visible in the DOM you explicitly choose to copy</li>
-      <li>Browsing history, bookmarks, saved passwords, or autofill data</li>
-      <li>Data from other tabs</li>
-    </ul>
-
-    <h2>What leaves your browser</h2>
-    <p>Nothing — unless <strong>you</strong> paste a copied bundle or screenshot somewhere. Yoink only writes to the system clipboard or triggers file downloads. Both actions are user-initiated and entirely under your control.</p>
-
-    <h2>Permissions used</h2>
-    <ul>
-      <li><code>activeTab</code> — read the current tab's DOM only when you trigger Yoink on it.</li>
-      <li><code>scripting</code> — inject the inspector script into the current page.</li>
-      <li><code>clipboardWrite</code> — copy bundles and PNG screenshots when you press the buttons.</li>
-      <li><code>storage</code> — remember the preferences listed above.</li>
-      <li><code>&lt;all_urls&gt;</code> host permission — required for <code>chrome.tabs.captureVisibleTab</code> (screenshots) and so the inspector works on any website.</li>
-    </ul>
-
-    <h2>Third-party services</h2>
-    <p>Yoink does not integrate with any third-party service, SDK, tracker, or analytics provider.</p>
-
-    <h2>Children's privacy</h2>
-    <p>Yoink is a developer tool. It is not directed at children under 13.</p>
-
-    <h2>Changes</h2>
-    <p>If this policy changes, the updated version will appear at the URL of this page. Material changes will also be noted in the extension's changelog.</p>
-
-    <h2>Contact</h2>
-    <p>Questions, concerns, or bug reports — reach out to the author:</p>
-    <div class="footer-links">
-      <a href="https://instagram.com/arslanov.tim">Instagram @arslanov.tim</a>
-      <a href="https://t.me/yourself_realize">Telegram @yourself_realize</a>
-    </div>
-
-    <div class="meta">
-      Yoink is open-source. Built by Timur Arslanov.
-    </div>
+    <footer>
+      <div>© 2026 Timur Arslanov · <a href="privacy.html">Privacy</a> · <a href="https://github.com/timurarslanov94/yoink/blob/main/LICENSE">License</a></div>
+      <div>
+        <a href="https://instagram.com/arslanov.tim">Instagram</a> ·
+        <a href="https://t.me/yourself_realize">Telegram</a>
+      </div>
+    </footer>
   </main>
 </body>
 </html>

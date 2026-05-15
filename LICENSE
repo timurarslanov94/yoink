@@ -1,0 +1,72 @@
+Yoink — Proprietary License
+Copyright (c) 2026 Timur Arslanov. All rights reserved.
+
+Yoink (the "Software") includes the source code, compiled extension,
+icons, design assets, documentation, and any related materials contained
+in this repository.
+
+1. PERMITTED USE
+   You are free to:
+   (a) Install and use Yoink as a Chrome browser extension for personal
+       or commercial purposes, free of charge.
+   (b) View the source code in this public repository for the sole purpose
+       of evaluation, education, or security review.
+   (c) Report bugs, suggest improvements, or contribute via pull requests
+       submitted to the official repository. Accepted contributions
+       become the property of the copyright holder.
+
+2. PROHIBITED USE
+   Without prior written permission from the copyright holder, you MAY NOT:
+   (a) Copy, reproduce, modify, adapt, translate, decompile (beyond what is
+       allowed by mandatory provisions of applicable law), or create any
+       derivative works based on the Software, in whole or in part.
+   (b) Distribute, sublicense, lease, sell, rent, lend, host, or otherwise
+       transfer the Software or any modified or unmodified copy of it, in
+       any form, to any third party.
+   (c) Publish the Software, or any derivative or fork thereof, on the
+       Chrome Web Store, Edge Add-ons, Firefox Add-ons, or any other
+       extension marketplace.
+   (d) Remove, alter, or obscure any copyright, trademark, attribution,
+       in-product credit (including the author credit added to AI prompt
+       bundles), or other proprietary notice contained in the Software.
+   (e) Use the Software's name, icon, branding, or "Yoink" trademark in
+       any product, service, marketing, or domain name without prior
+       written permission.
+   (f) Use any output, code, or assets extracted from the Software's
+       repository to train, fine-tune, or evaluate machine-learning models
+       intended for commercial release.
+
+3. NO IMPLIED LICENSE
+   No rights or licenses are granted under this License except those
+   expressly stated above. All other rights are reserved by the copyright
+   holder.
+
+4. DISCLAIMER OF WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+5. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE FOR ANY
+   CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+6. TERMINATION
+   Any violation of this License automatically terminates your right to
+   use the Software. Upon termination, you must immediately cease all use
+   and destroy all copies in your possession or control.
+
+7. GOVERNING LAW
+   This License shall be governed by the laws of the jurisdiction of the
+   copyright holder's primary residence, without regard to its conflict
+   of law provisions.
+
+8. CONTACT
+   For licensing inquiries, commercial use beyond personal installation,
+   or permission requests, contact the author:
+   - Instagram: @arslanov.tim  (https://instagram.com/arslanov.tim)
+   - Telegram:  @yourself_realize  (https://t.me/yourself_realize)
+
+By installing, using, or accessing the Software, you acknowledge that you
+have read this License, understand it, and agree to be bound by its terms.

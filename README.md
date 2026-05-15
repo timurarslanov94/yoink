@@ -53,4 +53,8 @@ Telegram: [@yourself_realize](https://t.me/yourself_realize)
 
 ## License
 
-MIT
+**Proprietary — All Rights Reserved.** Copyright © 2026 Timur Arslanov.
+
+You are free to install and use Yoink for personal or commercial purposes at no cost. You may **not** modify the source code, redistribute it, publish derivatives on extension marketplaces, or remove author credits. See [LICENSE](LICENSE) for full terms.
+
+For commercial licensing or permission requests — DM [@arslanov.tim](https://instagram.com/arslanov.tim) on Instagram or [@yourself_realize](https://t.me/yourself_realize) on Telegram.

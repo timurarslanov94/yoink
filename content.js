@@ -1,5 +1,5 @@
 /**
- * CopyCSS — content script (v2)
+ * Yoink — content script (v2)
  * Floating widget + inspector + multi-tab side panel
  * MV3-compatible: single file, no ES modules, Shadow DOM (closed) for UI isolation
  */
@@ -1454,7 +1454,7 @@
         </div>
         <div style="display:flex;align-items:center;gap:8px;">
           <button class="more" id="more" aria-label="Menu">${ICON.more}</button>
-          <button class="btn" id="btn" aria-label="CopyCSS Inspector — click to toggle, drag to move">${ICON.fab}</button>
+          <button class="btn" id="btn" aria-label="Yoink Inspector — click to toggle, drag to move">${ICON.fab}</button>
         </div>
       </div>
       <div class="toast" id="toast"></div>
@@ -1486,7 +1486,7 @@
         node.textContent = t(node.dataset.i);
       });
       // FAB main button accessible label
-      btn.setAttribute('aria-label', 'CopyCSS Inspector');
+      btn.setAttribute('aria-label', 'Yoink Inspector');
     }
     // populate language select
     for (const code of Object.keys(LANG_NAMES)) {
@@ -1999,7 +1999,7 @@
         <div class="header">
           <div class="header-main">
             <div class="title-row">
-              <span class="title">CopyCSS</span>
+              <span class="title">Yoink</span>
               <span class="badge" id="dims">—</span>
             </div>
             <button class="chip" id="chip" title="Click to copy selector" data-i="noElement"></button>
@@ -2480,7 +2480,7 @@
     const sel = getSelectorPath(el);
     const r = el.getBoundingClientRect();
     return [
-      `# CopyCSS — reproduce ${scope || 'this element'} EXACTLY 1:1`,
+      `# Yoink — reproduce ${scope || 'this element'} EXACTLY 1:1`,
       ``,
       `## PRIME DIRECTIVE`,
       `Reproduce the element **exactly as it is**. Do NOT improve, redesign, "modernize", or add features the user didn't ask for. Match every pixel: colors, sizes, spacing, typography, radii, shadows, hover/focus/active states, animations. If a screenshot is attached, **study it carefully** — it is the ground truth; the code is just a description. When in doubt, prefer the visual.`,
@@ -2578,7 +2578,7 @@
   }
   function buildPagePromptHeader() {
     return [
-      `# CopyCSS — reproduce this PAGE EXACTLY 1:1`,
+      `# Yoink — reproduce this PAGE EXACTLY 1:1`,
       ``,
       `## PRIME DIRECTIVE`,
       `Reproduce the page **exactly as it is**. Do not redesign, "improve", or add features. If a screenshot is attached, **study it carefully** — it's the ground truth. The HTML + CSS below is the description; the screenshot is the spec.`,

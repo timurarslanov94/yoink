@@ -1,5 +1,5 @@
 /**
- * CopyCSS Background Service Worker
+ * Yoink Background Service Worker
  * - Action icon click → toggle (or unhide widget if user "hid for this site")
  * - chrome.runtime message handler for screenshot capture
  */
@@ -22,7 +22,7 @@ chrome.action.onClicked.addListener(async (tab) => {
       }
     });
   } catch (e) {
-    console.warn('CopyCSS: action click failed', e);
+    console.warn('Yoink: action click failed', e);
   }
 });
 
